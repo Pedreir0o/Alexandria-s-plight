@@ -1,5 +1,8 @@
 extends CharacterBody2D
-
+#FALTA: 
+#  1- abaixar e levantar
+#  2- cd pro dash
+#  3- retoques para ter um "feeling" melhor
 #@export var velocidade = Vector2.ZERO;
 var last_action;
 var dash_cd = 0;
@@ -8,29 +11,43 @@ var state = 0;
 var jumpspeed = 400;
 @export var gravidade = 900;
 
-#tem q fazer o dash
-func dash():
+const dash_spd = 2100;
+
+
+#tem q fazer o dash 
+
+func dash_gound():
 	print(last_action);
-	if dash_cd != 0:
-		return;
 	if last_action == 1:
-		velocity.x = 2100;
-		print(velocity.x);
+		velocity.x = dash_spd;
+		velocity.y = dash_spd;
 	if last_action == 2:
-		velocity.x = -2100;
-		print(velocity.x);
+		velocity.x = -dash_spd;
+		velocity.y = dash_spd;
+	state = 2;
 	move_and_slide();
+func dash_diagonal():
+	print(last_action);
+	if last_action == 1:
+		velocity.x = (dash_spd) / 4;
+		velocity.y = (-dash_spd) / 4;
+	if last_action == 2:
+		velocity.x = (-dash_spd) / 4;
+		velocity.y = (-dash_spd) / 4;
+	state = 2;
+	move_and_slide();
+func dash():
+	if not is_on_floor():
+		if Input.is_action_pressed("cima"):
+			dash_diagonal();
+		else:
+			dash_gound();
 func abaixar():
 	var sprite = $Sprite2D;
 	var colission = $CollisionShape2D.shape;
-	colission.extents *= 0.5;
+	#colission.extents *= 0.5;
 	sprite.scale = Vector2(0.7,0.4);
-	state = 1;
-func levantar():
-	var sprite = $Sprite2D;
-	var colission = $CollisionShape2D.shape;
-	colission.extents *= 1.5;
-	sprite.scale = Vector2(1.3,1.6);
+
 
 
 #quando instancia
@@ -50,14 +67,12 @@ func get_input():
 	if Input.is_action_pressed("dash"):
 		dash();
 		print("DASH");
-	if state == 1:
-		levantar();
+
 	if !Input.is_anything_pressed():
 		velocity.x = 0;
 #por segundo
 func _process(delta:float) -> void:
 	get_input();
-	dash_cd -= 1; #balancear o cooldown
 	
 	
 func _physics_process(delta: float) -> void:

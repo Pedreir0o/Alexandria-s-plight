@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://btgawrtxoc11v"]
+
+[ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_xwi7g"]
+[ext_resource type="PackedScene" uid="uid://c5pvamn1wfies" path="res://chartest.tscn" id="2_allgy"]
+[ext_resource type="Texture2D" uid="uid://cdwfhxyoftfwk" path="res://assets/bandeira brasil.webp" id="3_j4iig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_allgy"]
+size = Vector2(1389, 233.75)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(842, -526)
+texture = ExtResource("1_xwi7g")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_allgy")]
+position = Vector2(429, -140)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(32, -206)
+zoom = Vector2(0.75, 0.75)
+
+[node name="plataforma_tst" type="StaticBody2D" parent="."]
+position = Vector2(404, 130)
+
+[node name="Sprite2D" type="Sprite2D" parent="plataforma_tst"]
+scale = Vector2(0.69925004, 0.17678574)
+texture = ExtResource("3_j4iig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma_tst"]
+shape = SubResource("RectangleShape2D_allgy")
+
+[node name="plataforma_tst2" type="StaticBody2D" parent="."]
+position = Vector2(1887, 140)
+
+[node name="Sprite2D" type="Sprite2D" parent="plataforma_tst2"]
+scale = Vector2(0.69925004, 0.17678574)
+texture = ExtResource("3_j4iig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma_tst2"]
+shape = SubResource("RectangleShape2D_allgy")
+
+[node name="plataforma_tst3" type="StaticBody2D" parent="."]
+position = Vector2(404, 430)
+
+[node name="Sprite2D" type="Sprite2D" parent="plataforma_tst3"]
+position = Vector2(-1559.7499, -304.24994)
+scale = Vector2(0.69925004, 0.17678574)
+texture = ExtResource("3_j4iig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma_tst3"]
+position = Vector2(-1559.75, -304.25)
+shape = SubResource("RectangleShape2D_allgy")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://btgawrtxoc11v"]
+
+[ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_xwi7g"]
+[ext_resource type="PackedScene" uid="uid://c5pvamn1wfies" path="res://chartest.tscn" id="2_allgy"]
+[ext_resource type="Texture2D" uid="uid://cdwfhxyoftfwk" path="res://assets/bandeira brasil.webp" id="3_j4iig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_allgy"]
+size = Vector2(1389, 233.75)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(842, -526)
+texture = ExtResource("1_xwi7g")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_allgy")]
+position = Vector2(434, -149)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(5, -172)
+
+[node name="plataforma_tst" type="StaticBody2D" parent="."]
+position = Vector2(404, 130)
+
+[node name="Sprite2D" type="Sprite2D" parent="plataforma_tst"]
+scale = Vector2(0.69925004, 0.17678574)
+texture = ExtResource("3_j4iig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma_tst"]
+shape = SubResource("RectangleShape2D_allgy")

@@ -17,7 +17,6 @@ const dash_spd = 2100;
 #tem q fazer o dash 
 
 func dash_gound():
-	print(last_action);
 	if last_action == 1:
 		velocity.x = dash_spd;
 		velocity.y = dash_spd;
@@ -27,7 +26,6 @@ func dash_gound():
 	state = 2;
 	move_and_slide();
 func dash_diagonal():
-	print(last_action);
 	if last_action == 1:
 		velocity.x = (dash_spd) / 4;
 		velocity.y = (-dash_spd) / 4;

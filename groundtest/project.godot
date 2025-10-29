@@ -48,6 +48,11 @@ bater={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="hitbox"
+2d_render/layer_2="hurtbox"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

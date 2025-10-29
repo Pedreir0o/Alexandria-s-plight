@@ -10,7 +10,7 @@ var state = 0;
 @export var runspeed = 300;
 var jumpspeed = 400;
 var gravidade = 900;
-
+var vida = 3;
 const dash_spd = 2100;
 
 
@@ -66,6 +66,13 @@ func end_ataque():
 func _ready() -> void:
 	last_action = 0;
 	end_ataque();
+	$hurtbox.connect("dano", Callable(self, "_dano_hurtbox"))
+func _dano_hurtbox():
+	vida = vida - 1;
+	if vida <= 0:
+		tela_game_over();
+func tela_game_over():
+	$Sprite2D.visible = false;
 #por entrada
 func get_input_atack():
 	if Input.is_action_just_pressed("bater"):

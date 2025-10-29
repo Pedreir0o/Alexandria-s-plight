@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5pvamn1wfies"]
+[gd_scene load_steps=9 format=3 uid="uid://c5pvamn1wfies"]
 
 [ext_resource type="Texture2D" uid="uid://ctq3jmyhfhsd" path="res://assets/metro_blu-min_make_it_bluerer.png" id="1_m5n0q"]
 [ext_resource type="Script" uid="uid://o1na2en2mksl" path="res://scripts/chartest.gd" id="1_p1u7u"]
 [ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="3_l4ywa"]
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="4_6myrf"]
+[ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://hurtbox.gd" id="5_c3cgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5n0q"]
 size = Vector2(336.125, 264.6875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6myrf"]
 size = Vector2(137.5, 65.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0w2p"]
+size = Vector2(343, 270)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_p1u7u")
@@ -30,13 +34,25 @@ target_position = Vector2(176, 0)
 
 [node name="hitbox" type="Area2D" parent="."]
 position = Vector2(237, -5)
+collision_mask = 2
 script = ExtResource("3_l4ywa")
 metadata/_custom_type_script = "uid://d1v57rr248np6"
 
 [node name="Hit" type="CollisionShape2D" parent="hitbox"]
+visibility_layer = 2
 shape = SubResource("RectangleShape2D_6myrf")
 
 [node name="Sprite2D" type="Sprite2D" parent="hitbox"]
 position = Vector2(0.25000954, 5)
 scale = Vector2(1.0742189, 0.1875)
 texture = ExtResource("4_6myrf")
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("5_c3cgw")
+metadata/_custom_type_script = "uid://cpoa23f5whlnu"
+
+[node name="hurt" type="CollisionShape2D" parent="hurtbox"]
+modulate = Color(0.91227055, 4.7168137e-06, 6.738305e-07, 1)
+light_mask = 2
+position = Vector2(-1.5, -4)
+shape = SubResource("RectangleShape2D_o0w2p")

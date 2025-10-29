@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5hqt31ssg1c4"]
 
-[ext_resource type="Script" uid="uid://b1ndluvnbm38t" path="res://pomum_mov.gd" id="1_0dvr7"]
+[ext_resource type="Script" uid="uid://b1ndluvnbm38t" path="res://scripts/pomum_mov.gd" id="1_0dvr7"]
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_bd87u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wld48"]

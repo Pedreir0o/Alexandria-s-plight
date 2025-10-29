@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dda3nj0tpxyp1"]
+[gd_scene load_steps=8 format=3 uid="uid://dda3nj0tpxyp1"]
 
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_bayb4"]
-[ext_resource type="Script" uid="uid://bq06itmrgycbl" path="res://tartaruga.gd" id="1_cpofr"]
+[ext_resource type="Script" uid="uid://bq06itmrgycbl" path="res://scripts/tartaruga.gd" id="1_cpofr"]
 [ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="2_vnsqs"]
+[ext_resource type="Texture2D" uid="uid://cdwfhxyoftfwk" path="res://assets/bandeira brasil.webp" id="4_82s6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnsqs"]
 size = Vector2(213, 36)
@@ -11,8 +12,8 @@ size = Vector2(213, 36)
 size = Vector2(180, 51.625)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_cpofr"]
-a = Vector2(-36, -42)
-b = Vector2(-97, -42)
+a = Vector2(38.5, 3)
+b = Vector2(-49.5, 3)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_cpofr")
@@ -41,7 +42,15 @@ script = ExtResource("2_vnsqs")
 metadata/_custom_type_script = "uid://d1v57rr248np6"
 
 [node name="hit" type="CollisionShape2D" parent="hitbox"]
+modulate = Color(0.819747, 0, 0.101659216, 1)
+light_mask = 2
+position = Vector2(-127.5, -43)
 shape = SubResource("SegmentShape2D_cpofr")
+
+[node name="Sprite2D" type="Sprite2D" parent="hitbox"]
+position = Vector2(-132.3125, -40)
+scale = Vector2(0.04268749, 0.002678571)
+texture = ExtResource("4_82s6y")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-117, 0)

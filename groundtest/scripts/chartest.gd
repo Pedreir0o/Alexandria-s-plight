@@ -10,8 +10,9 @@ var state = 0;
 @export var runspeed = 300;
 var jumpspeed = 400;
 var gravidade = 900;
-var vida = 3;
+@onready var hp = $vida;
 const dash_spd = 2100;
+
 
 
 #tem q fazer o dash 
@@ -54,23 +55,26 @@ func levantar():
 	colission.scale.y = 1;
 	sprite.scale = Vector2(0.8,0.5);
 func ataque():
+	$hitbox.monitorable = true;
+	$hitbox.monitoring = true;
 	if last_action == -1:
 		$hitbox.position.x = -237;
 	else:
 		$hitbox.position.x = 237;
 	$hitbox/Sprite2D.visible = true;
+	$hitbox.active = 1;
 func end_ataque():
 	$hitbox.monitoring = false;
 	$hitbox/Sprite2D.visible = false;
+	$hitbox.monitorable = false;
 #quando instancia
 func _ready() -> void:
 	last_action = 0;
 	end_ataque();
 	$hurtbox.connect("dano", Callable(self, "_dano_hurtbox"))
-func _dano_hurtbox():
-	vida = vida - 1;
-	if vida <= 0:
-		tela_game_over();
+	$vida.connect("vida_zerada",Callable(self,"_tela_game_over()"))
+func _dano_hurtbox(val:int):
+	hp.set_vida(val);
 func tela_game_over():
 	$Sprite2D.visible = false;
 #por entrada

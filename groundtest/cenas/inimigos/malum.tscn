@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj4mvky8rgkbi"]
+
+[ext_resource type="Script" uid="uid://brttj7tqqojrj" path="res://scripts/malum_mov.gd" id="1_3khgd"]
+[ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_81l6w"]
+[ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="3_q651e"]
+[ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://scripts/hurtbox.gd" id="4_cln62"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3khgd"]
+radius = 137.00365
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q651e"]
+radius = 136.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wqyt"]
+radius = 132.63861
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_3khgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3khgd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.81992966, 0.18816483, 0.18711028, 1)
+self_modulate = Color(1, 0.34398782, 0.5102495, 1)
+position = Vector2(0.49999142, 0.5000165)
+scale = Vector2(1.6328125, 1.6171876)
+texture = ExtResource("1_81l6w")
+
+[node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("3_q651e")
+metadata/_custom_type_script = "uid://d1v57rr248np6"
+
+[node name="hit" type="CollisionShape2D" parent="hitbox"]
+modulate = Color(0.9063309, 0.011582954, 0.34285316, 1)
+shape = SubResource("CircleShape2D_q651e")
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_cln62")
+metadata/_custom_type_script = "uid://cpoa23f5whlnu"
+
+[node name="hurt" type="CollisionShape2D" parent="hurtbox"]
+modulate = Color(0.48069578, 0.016755609, 0.07807609, 1)
+shape = SubResource("CircleShape2D_2wqyt")

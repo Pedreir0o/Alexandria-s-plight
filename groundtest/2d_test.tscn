@@ -17,10 +17,10 @@ size = Vector2(356, 1797)
 position = Vector2(-9, -778)
 texture = ExtResource("1_xwi7g")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_allgy")]
+[node name="player" parent="." instance=ExtResource("2_allgy")]
 position = Vector2(429, -140)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(32, -206)
 zoom = Vector2(0.75, 0.75)
 
@@ -81,4 +81,4 @@ scale = Vector2(2.8124998, 14.039063)
 texture = ExtResource("1_xwi7g")
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("5_mvb3i")]
-position = Vector2(-3, -144)
+position = Vector2(-45, -40)

@@ -14,14 +14,28 @@ size = Vector2(213, 36)
 size = Vector2(180, 51.625)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_cpofr"]
-a = Vector2(38.5, 3)
-b = Vector2(-49.5, 3)
+a = Vector2(122, 10)
+b = Vector2(-53, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48jsn"]
 size = Vector2(214, 87)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_cpofr")
+
+[node name="vida" type="Node" parent="."]
+script = ExtResource("6_48jsn")
+max_vida = 5
+metadata/_custom_type_script = "uid://3lh343og3r5g"
+
+[node name="ATK_CD" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="ATK_STATE_CD" type="Timer" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-117, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.13332266, 0.5909428, 6.545782e-06, 1)
@@ -49,16 +63,13 @@ metadata/_custom_type_script = "uid://d1v57rr248np6"
 [node name="hit" type="CollisionShape2D" parent="hitbox"]
 modulate = Color(0.819747, 0, 0.101659216, 1)
 light_mask = 2
-position = Vector2(-127.5, -43)
+position = Vector2(-122, -47)
 shape = SubResource("SegmentShape2D_cpofr")
 
 [node name="Sprite2D" type="Sprite2D" parent="hitbox"]
 position = Vector2(-132.3125, -40)
 scale = Vector2(0.04268749, 0.002678571)
 texture = ExtResource("4_82s6y")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-117, 0)
 
 [node name="hurtbox" type="Area2D" parent="."]
 script = ExtResource("5_bxgtb")
@@ -70,7 +81,5 @@ light_mask = 2
 position = Vector2(-1, -27)
 shape = SubResource("RectangleShape2D_48jsn")
 
-[node name="vida" type="Node" parent="."]
-script = ExtResource("6_48jsn")
-max_vida = 5
-metadata/_custom_type_script = "uid://3lh343og3r5g"
+[connection signal="timeout" from="ATK_CD" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ATK_STATE_CD" to="." method="_on_atk_state_cd_timeout"]

@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5hqt31ssg1c4"]
+[gd_scene load_steps=7 format=3 uid="uid://c5hqt31ssg1c4"]
 
 [ext_resource type="Script" uid="uid://b1ndluvnbm38t" path="res://scripts/pomum_mov.gd" id="1_0dvr7"]
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_bd87u"]
+[ext_resource type="Script" uid="uid://3lh343og3r5g" path="res://scripts/vida.gd" id="3_ak14q"]
+[ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://scripts/hurtbox.gd" id="4_ooaqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wld48"]
 radius = 137.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jcxp"]
+radius = 136.0588
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_0dvr7")
+
+[node name="vida" type="Node" parent="."]
+script = ExtResource("3_ak14q")
+metadata/_custom_type_script = "uid://3lh343og3r5g"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wld48")
@@ -18,3 +27,13 @@ self_modulate = Color(0.3762604, 0.75151575, 0.5547911, 1)
 position = Vector2(0.50000787, -0.9999976)
 scale = Vector2(1.6328124, 1.59375)
 texture = ExtResource("1_bd87u")
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_ooaqp")
+metadata/_custom_type_script = "uid://cpoa23f5whlnu"
+
+[node name="hurt" type="CollisionShape2D" parent="hurtbox"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("CircleShape2D_6jcxp")
+
+[connection signal="vida_zerada" from="vida" to="." method="_on_vida_vida_zerada"]

@@ -72,11 +72,14 @@ func _ready() -> void:
 	last_action = 0;
 	end_ataque();
 	$hurtbox.connect("dano", Callable(self, "_dano_hurtbox"))
-	$vida.connect("vida_zerada",Callable(self,"_tela_game_over()"))
+	$vida.connect("vida_zerada",Callable(self,"_tela_game_over"))
 func _dano_hurtbox(val:int):
-	hp.set_vida(val);
-func tela_game_over():
-	$Sprite2D.visible = false;
+	print($vida.vida_atual);
+	hp.set_vida(-val);
+func _tela_game_over(val:bool):
+	if val == true:
+		print("MORREU")
+		queue_free();
 #por entrada
 func get_input_atack():
 	if Input.is_action_just_pressed("bater"):

@@ -12,5 +12,4 @@ func _on_area_entered(hit: Area2D) ->void:
 	if hit is hitbox:
 		if hit.get_parent() == self.get_parent():
 			return
-		print("A")
 		dano.emit(hit.damage);

@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://casgnnwybxnsp"]
+
+[ext_resource type="Script" uid="uid://bgxnr7o0klxbb" path="res://scripts/centuriao.gd" id="1_etkhp"]
+[ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_pm53l"]
+[ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://scripts/hurtbox.gd" id="2_etkhp"]
+[ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="3_w47kf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p2tf6"]
+radius = 70.0
+height = 314.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbrk1"]
+radius = 80.0
+height = 316.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxn06"]
+size = Vector2(20, 324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf0yd"]
+size = Vector2(147, 26)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_etkhp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_p2tf6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.46666667, 1)
+position = Vector2(-2, 5.0000005)
+scale = Vector2(0.953125, 2.203125)
+texture = ExtResource("1_pm53l")
+
+[node name="hurtbox" type="Area2D" parent="."]
+position = Vector2(-32, -15)
+script = ExtResource("2_etkhp")
+metadata/_custom_type_script = "uid://cpoa23f5whlnu"
+
+[node name="hurt" type="CollisionShape2D" parent="hurtbox"]
+modulate = Color(0.92941177, 0.050980393, 0, 1)
+position = Vector2(31, 16)
+shape = SubResource("CapsuleShape2D_gbrk1")
+
+[node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("3_w47kf")
+metadata/_custom_type_script = "uid://d1v57rr248np6"
+
+[node name="escudo" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-94, -18)
+shape = SubResource("RectangleShape2D_lxn06")
+disabled = true
+
+[node name="hitbox2" type="Area2D" parent="."]
+script = ExtResource("3_w47kf")
+metadata/_custom_type_script = "uid://d1v57rr248np6"
+
+[node name="espada" type="CollisionShape2D" parent="hitbox2"]
+modulate = Color(0.25490198, 0.10980392, 1, 1)
+position = Vector2(-157.5, -5)
+shape = SubResource("RectangleShape2D_wf0yd")

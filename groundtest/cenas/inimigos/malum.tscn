@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj4mvky8rgkbi"]
+[gd_scene load_steps=9 format=3 uid="uid://cj4mvky8rgkbi"]
 
 [ext_resource type="Script" uid="uid://brttj7tqqojrj" path="res://scripts/malum_mov.gd" id="1_3khgd"]
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_81l6w"]
+[ext_resource type="Script" uid="uid://3lh343og3r5g" path="res://scripts/vida.gd" id="2_2wqyt"]
 [ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="3_q651e"]
 [ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://scripts/hurtbox.gd" id="4_cln62"]
 
@@ -16,6 +17,10 @@ radius = 132.63861
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_3khgd")
+
+[node name="vida" type="Node" parent="."]
+script = ExtResource("2_2wqyt")
+metadata/_custom_type_script = "uid://3lh343og3r5g"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3khgd")

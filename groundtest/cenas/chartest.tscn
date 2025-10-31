@@ -21,6 +21,7 @@ script = ExtResource("1_p1u7u")
 
 [node name="vida" type="Node" parent="."]
 script = ExtResource("2_2obow")
+vencivel = 1
 metadata/_custom_type_script = "uid://3lh343og3r5g"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

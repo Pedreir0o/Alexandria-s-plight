@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://casgnnwybxnsp"]
+[gd_scene load_steps=10 format=3 uid="uid://casgnnwybxnsp"]
 
 [ext_resource type="Script" uid="uid://bgxnr7o0klxbb" path="res://scripts/centuriao.gd" id="1_etkhp"]
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_pm53l"]
+[ext_resource type="Script" uid="uid://3lh343og3r5g" path="res://scripts/vida.gd" id="2_5p67b"]
 [ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://scripts/hurtbox.gd" id="2_etkhp"]
 [ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="3_w47kf"]
 
@@ -21,6 +22,13 @@ size = Vector2(147, 26)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_etkhp")
+
+[node name="vida" type="Node" parent="."]
+script = ExtResource("2_5p67b")
+metadata/_custom_type_script = "uid://3lh343og3r5g"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_p2tf6")
@@ -58,3 +66,9 @@ metadata/_custom_type_script = "uid://d1v57rr248np6"
 modulate = Color(0.25490198, 0.10980392, 1, 1)
 position = Vector2(-157.5, -5)
 shape = SubResource("RectangleShape2D_wf0yd")
+
+[node name="raycast_esquerda" type="RayCast2D" parent="."]
+target_position = Vector2(-546, -2)
+
+[node name="raycast_direito" type="RayCast2D" parent="."]
+target_position = Vector2(561, 1)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://btgawrtxoc11v"]
+[gd_scene load_steps=6 format=3 uid="uid://btgawrtxoc11v"]
 
 [ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="1_xwi7g"]
 [ext_resource type="PackedScene" uid="uid://c5pvamn1wfies" path="res://cenas/chartest.tscn" id="2_allgy"]
 [ext_resource type="Texture2D" uid="uid://cdwfhxyoftfwk" path="res://assets/bandeira brasil.webp" id="3_j4iig"]
-[ext_resource type="PackedScene" uid="uid://dda3nj0tpxyp1" path="res://cenas/inimigos/tartaruga.tscn" id="5_mvb3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_allgy"]
 size = Vector2(1389, 233.75)
@@ -79,6 +78,3 @@ shape = SubResource("RectangleShape2D_j4iig")
 position = Vector2(-5.7458878e-05, 7.499939)
 scale = Vector2(2.8124998, 14.039063)
 texture = ExtResource("1_xwi7g")
-
-[node name="CharacterBody2D2" parent="." instance=ExtResource("5_mvb3i")]
-position = Vector2(-45, -40)

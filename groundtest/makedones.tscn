@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://rw3vpqpnsfar"]
+
+[ext_resource type="Script" uid="uid://ctkij0pd3njeg" path="res://makedones.gd" id="1_85xkg"]
+[ext_resource type="Script" uid="uid://cpoa23f5whlnu" path="res://scripts/hurtbox.gd" id="1_kkdwx"]
+[ext_resource type="Texture2D" uid="uid://bjbroxfvljfy2" path="res://assets/icon.svg" id="2_mch36"]
+[ext_resource type="Script" uid="uid://3lh343og3r5g" path="res://scripts/vida.gd" id="2_t840h"]
+[ext_resource type="Script" uid="uid://d1v57rr248np6" path="res://scripts/hit.gd" id="3_i0jbo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mch36"]
+radius = 88.0
+height = 396.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i0jbo"]
+radius = 83.0
+height = 420.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck0tw"]
+size = Vector2(431, 64.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85xkg"]
+size = Vector2(51.529427, 365.37463)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_85xkg")
+
+[node name="vida" type="Node" parent="."]
+script = ExtResource("2_t840h")
+vencivel = 1
+metadata/_custom_type_script = "uid://3lh343og3r5g"
+
+[node name="atk_cd" type="Timer" parent="."]
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("1_kkdwx")
+metadata/_custom_type_script = "uid://cpoa23f5whlnu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("CapsuleShape2D_mch36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i0jbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.2915344e-06, 0)
+scale = Vector2(1.234375, 2.546875)
+texture = ExtResource("2_mch36")
+
+[node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("3_i0jbo")
+metadata/_custom_type_script = "uid://d1v57rr248np6"
+
+[node name="hit_ground" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-307.5, 1)
+shape = SubResource("RectangleShape2D_ck0tw")
+
+[node name="hitbox2" type="Area2D" parent="."]
+position = Vector2(-98, 44)
+script = ExtResource("3_i0jbo")
+metadata/_custom_type_script = "uid://d1v57rr248np6"
+
+[node name="hit_air" type="CollisionShape2D" parent="hitbox2"]
+position = Vector2(-170, 66)
+rotation = -2.1135938
+scale = Vector2(1.5178032, -1.1824529)
+shape = SubResource("RectangleShape2D_85xkg")

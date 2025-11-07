@@ -67,8 +67,8 @@ position = Vector2(-122, -47)
 shape = SubResource("SegmentShape2D_cpofr")
 
 [node name="Sprite2D" type="Sprite2D" parent="hitbox"]
-position = Vector2(-132.3125, -40)
-scale = Vector2(0.04268749, 0.002678571)
+position = Vector2(-131.8125, -40)
+scale = Vector2(0.0421875, 0.002678571)
 texture = ExtResource("4_82s6y")
 
 [node name="hurtbox" type="Area2D" parent="."]
